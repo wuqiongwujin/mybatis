@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--配置-->
+<configuration>
+    <!--设置-->
+    <settings>
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="defaultExecutorType" value="REUSE"/>
+    </settings>
+    <!--类型命名-->
+    <typeAliases>
+        <typeAlias alias="DBRoute" type="wq.mybatis.test.bean.DBRoute"/>
+    </typeAliases>
+    <!--配置环境-->
+    <environments default="development">
+        <!--环境变量-->
+        <environment id="development">
+            <!--事务管理器-->
+            <transactionManager type="jdbc"/>
+            <!--数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test-sys?useUnicode=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--映射器-->
+    <mappers>
+        <package name="wq/mybatis/test/mapper"/>
+    </mappers>
+</configuration>

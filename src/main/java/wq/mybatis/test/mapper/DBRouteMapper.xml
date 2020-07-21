@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wq.mybatis.test.mapper.DBRouteMapper">
+    <resultMap id="dbRouteMap" type="wq.mybatis.test.bean.DBRoute">
+        <result property="id" column="id"/>
+        <result property="companyID" column="companyID"/>
+        <result property="type" column="type"/>
+        <result property="dbInstance" column="dbInstance"/>
+    </resultMap>
+
+    <select id="listDBRouteByCompanyIDAndType" resultMap="dbRouteMap">
+        select * from db_route where companyID=#{companyID} and type=#{type}
+    </select>
+
+    <insert id="add" parameterType="wq.mybatis.test.bean.DBRoute">
+        insert into db_route(id,companyID,`type`,dbInstance) values(#{id},#{companyID},#{type},#{dbInstance})
+    </insert>
+
+    <update id="updateByID">
+        update db_route set `dbInstance`=#{newDBInstance} where id=#{id}
+    </update>
+</mapper>
+
